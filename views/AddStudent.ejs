@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function validateName(id,errid){
+      var name=document.getElementById(id).value;
+      var reg=/\d/;
+      if(reg.test(name)){
+        document.getElementById(errid).innerHTML="Name should not contain digits !!";
+        return false;
+      }
+      else{
+        document.getElementById(errid).innerHTML="";
+        return true;
+      }
+    }
+    function validatePhone(id,errid){
+      var phone=document.getElementById(id).value;
+      if(phone.length!=10){
+        document.getElementById(errid).innerHTML="Mobile no length should be 10 digit !!";
+        return false;
+      }
+      else{
+        document.getElementById(errid).innerHTML="";
+        return true;
+      }
+    }
+    function validateData(){
+      var flag1= validateName("name","errname");
+      var flag2=validatePhone("phone","errphone");
+      return flag1&&flag2;
+    }
+  </script>
+</head>
+<body>
+  <form action="insertNewStudent" method="post" onsubmit="return validateData()">
+    Name: <input type="text" name="name" id="name" required><br>
+    Address: <input type="text" name="address" id="address" required><br> 
+    Phone: <input type="text" name="phone" id="phone" required><br>
+    Branch: <input type="text" name="branch" id="branch" required ><br> 
+    <input type="submit" value="submit"  name="sub" id="sub"><br>
+    <span id="errname"></span>
+    <span id="errphone"></span>
+
+  </form>
+</body>
+</html>
